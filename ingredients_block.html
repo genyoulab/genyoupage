@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olive Glow Booster - Ingredients Section</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Reset & Variables */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-main: #658D1B;
+            --color-deep: #3F5A0F;
+            --color-tint: #A8C36A;
+            --color-pale: #EAF0DC;
+            --color-text: #2A2A22;
+            --color-white: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #f0f0f0; /* 배경 구분용 (실제 섹션은 흰색) */
+            color: var(--color-text);
+        }
+
+        /* Ingredients Section */
+        .ingredients-section {
+            width: 100%;
+            background-color: var(--color-white);
+            padding: 100px 5%;
+        }
+
+        .ingredients-container {
+            display: flex;
+            align-items: stretch;
+            justify-content: space-between;
+            max-width: 1100px;
+            margin: 0 auto;
+            gap: 50px;
+        }
+
+        /* Left: Survey Satisfaction Card */
+        .survey-card {
+            flex: 1;
+            background-color: var(--color-pale);
+            border-radius: 24px;
+            padding: 60px 40px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 20px 40px rgba(101, 141, 27, 0.08);
+            
+            /* Animation starting state */
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .survey-card.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .survey-title {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.4;
+            color: var(--color-text);
+        }
+
+        .survey-number {
+            font-size: 72px;
+            font-weight: 800;
+            color: var(--color-main);
+            line-height: 1;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 10px rgba(101, 141, 27, 0.15);
+        }
+
+        .survey-number small {
+            font-size: 40px;
+            font-weight: 500;
+            margin: 0 5px;
+        }
+
+        .survey-desc {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.5;
+            margin-bottom: 40px;
+        }
+
+        .base-highlight {
+            background-color: var(--color-white);
+            color: var(--color-deep);
+            padding: 16px 30px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: 500;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(168, 195, 106, 0.3);
+        }
+
+        .base-highlight strong {
+            color: var(--color-main);
+            font-weight: 800;
+        }
+
+        /* Right: Ingredients & Marks */
+        .ingredients-content {
+            flex: 1.2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            
+            /* Animation starting state */
+            opacity: 0;
+            transform: translateX(40px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+        }
+
+        .ingredients-content.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .ingredients-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--color-text);
+        }
+
+        /* Frame placeholder */
+        .ingredients-frame {
+            border: 1.5px dashed var(--color-tint);
+            border-radius: 16px;
+            padding: 40px;
+            min-height: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(234, 240, 220, 0.2);
+            margin-bottom: 20px;
+        }
+
+        .placeholder-text {
+            text-align: center;
+            color: #888;
+            font-size: 16px;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        .placeholder-text strong {
+            color: var(--color-main);
+            font-weight: 500;
+        }
+
+        /* Marks */
+        .marks-frame {
+            display: flex;
+            gap: 15px;
+        }
+
+        .mark-item {
+            flex: 1;
+            background-color: var(--color-white);
+            border: 1.5px solid var(--color-tint);
+            color: var(--color-main);
+            border-radius: 12px;
+            padding: 20px 10px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .mark-item:hover {
+            background-color: var(--color-main);
+            color: var(--color-white);
+            transform: translateY(-3px);
+        }
+
+        .mark-item svg {
+            width: 28px;
+            height: 28px;
+            fill: currentColor;
+        }
+
+        /* Mobile Responsive */
+        @media screen and (max-width: 850px) {
+            .ingredients-container {
+                flex-direction: column;
+            }
+
+            .survey-card {
+                padding: 50px 20px;
+            }
+
+            .survey-number {
+                font-size: 60px;
+            }
+            
+            .survey-number small {
+                font-size: 32px;
+            }
+
+            .marks-frame {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Spacer to demonstrate scroll effect -->
+    <div style="height: 100vh; display:flex; align-items:center; justify-content:center; color:#888;">
+        아래로 스크롤하여 섹션 확인 ↓
+    </div>
+
+    <section class="ingredients-section" id="ingredientsSection">
+        <div class="ingredients-container">
+            
+            <!-- Left: Survey Satisfaction Card -->
+            <div class="survey-card" id="surveyCard">
+                <h3 class="survey-title">고객이 직접 증명한<br>압도적 만족도</h3>
+                
+                <div class="survey-number">
+                    <span class="count-up" data-target="95">0</span><small>~</small><span class="count-up" data-target="100">0</span><small>%</small>
+                </div>
+                
+                <p class="survey-desc">보습 지속력, 피부결 개선, 전반적 사용감 등<br>다방면 만족도 설문 결과</p>
+                
+                <!-- Olive Water Base Highlight -->
+                <div class="base-highlight">
+                    정제수 대신 <strong>고농축 올리브 워터 베이스</strong> 적용
+                </div>
+            </div>
+
+            <!-- Right: Ingredients & Marks -->
+            <div class="ingredients-content" id="ingredientsContent">
+                <h3 class="ingredients-title">전성분 & 클린뷰티</h3>
+                
+                <!-- Ingredients List Frame -->
+                <div class="ingredients-frame">
+                    <p class="placeholder-text">
+                        <strong>전성분 리스트 텍스트 또는 이미지 기입 영역</strong><br><br>
+                        (예: 올리브잎추출물(53%), 부틸렌글라이콜, 글리세린, 나이아신아마이드, 1,2-헥산다이올, 마카다미아씨오일, 아데노신, 라벤더오일...)
+                    </p>
+                </div>
+                
+                <!-- Free From / Clean Beauty Marks Frame -->
+                <div class="marks-frame">
+                    <div class="mark-item">
+                        <!-- Shield icon -->
+                        <svg viewBox="0 0 24 24"><path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1Z"/></svg>
+                        유해성분 無첨가
+                    </div>
+                    <div class="mark-item">
+                        <!-- Leaf icon -->
+                        <svg viewBox="0 0 24 24"><path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 7,11.5 7,11.5C7,11.5 10.5,8 17,8Z"/></svg>
+                        비건 친화 원료
+                    </div>
+                    <div class="mark-item">
+                        <!-- Recycle/Eco icon -->
+                        <svg viewBox="0 0 24 24"><path d="M12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22M12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20M11,15.5V13H7V11H11V8.5L14.5,12L11,15.5Z"/></svg>
+                        에코 패키징
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Spacer -->
+    <div style="height: 50vh;"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const ingredientsSection = document.getElementById('ingredientsSection');
+            const surveyCard = document.getElementById('surveyCard');
+            const ingredientsContent = document.getElementById('ingredientsContent');
+            const counters = document.querySelectorAll('.count-up');
+            
+            let animated = false;
+
+            // Ease out quart
+            function easeOutQuart(x) {
+                return 1 - Math.pow(1 - x, 4);
+            }
+
+            function animateValue(element, endValue, duration) {
+                const startTime = performance.now();
+                
+                function update(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const easedProgress = easeOutQuart(progress);
+                    
+                    const currentNumber = Math.floor(easedProgress * endValue);
+                    element.innerText = currentNumber;
+
+                    if (progress < 1) {
+                        requestAnimationFrame(update);
+                    } else {
+                        element.innerText = endValue;
+                    }
+                }
+                requestAnimationFrame(update);
+            }
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !animated) {
+                        animated = true;
+                        
+                        // Slide in animations
+                        surveyCard.classList.add('active');
+                        ingredientsContent.classList.add('active');
+                        
+                        // Number count up animation with slight delay
+                        setTimeout(() => {
+                            counters.forEach(counter => {
+                                const target = parseInt(counter.getAttribute('data-target'));
+                                animateValue(counter, target, 1500);
+                            });
+                        }, 400);
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            observer.observe(ingredientsSection);
+        });
+    </script>
+</body>
+</html>

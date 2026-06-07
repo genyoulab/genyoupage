@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olive Glow Booster - Hook Section</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Reset & Variables */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-main: #658D1B;
+            --color-pale: #EAF0DC;
+            --color-text: #2A2A22;
+            --color-gray-bg: #F8F9FA;
+            --color-gray-text: #868E96;
+            --color-gray-border: #DEE2E6;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #f0f0f0; /* 배경 구분용 (실제 섹션은 흰색) */
+        }
+
+        /* Hook Section Container */
+        .hook-section {
+            width: 100%;
+            background-color: #FFFFFF;
+            padding: 100px 5%;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hook-title {
+            color: var(--color-text);
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 60px;
+        }
+
+        /* Comparison Layout */
+        .comparison-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Cards Base */
+        .card {
+            flex: 1;
+            padding: 50px 30px;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0; /* For animation */
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Left Card (Oil - Subdued) */
+        .card-left {
+            background-color: var(--color-gray-bg);
+            border: 1px solid var(--color-gray-border);
+            color: var(--color-gray-text);
+            transform: translateX(-100px);
+        }
+
+        /* Right Card (Water - Highlighted) */
+        .card-right {
+            background-color: var(--color-pale);
+            border: 2px solid var(--color-main);
+            color: var(--color-text);
+            transform: translateX(100px);
+            box-shadow: 0 15px 30px rgba(101, 141, 27, 0.15);
+        }
+
+        .card.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .card-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .card-desc {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .card-value {
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .card-left .card-value {
+            color: var(--color-gray-text);
+        }
+
+        .card-right .card-value {
+            color: var(--color-main);
+        }
+        
+        .card-value small {
+            font-size: 24px;
+        }
+
+        /* VS Text */
+        .vs-text {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--color-main);
+            background: #FFFFFF;
+            padding: 15px;
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            z-index: 2;
+            opacity: 0;
+            transform: scale(0.5);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.3s;
+        }
+
+        .vs-text.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Mobile Responsive */
+        @media screen and (max-width: 768px) {
+            .comparison-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .card-left {
+                transform: translateY(50px) translateX(0);
+            }
+            .card-right {
+                transform: translateY(50px) translateX(0);
+            }
+
+            .card.active {
+                transform: translateY(0) translateX(0);
+            }
+
+            .vs-text {
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Spacer to demonstrate scroll effect -->
+    <div style="height: 100vh; display:flex; align-items:center; justify-content:center; color:#888;">
+        아래로 스크롤하여 섹션 확인 ↓
+    </div>
+
+    <section class="hook-section" id="hookSection">
+        <h2 class="hook-title">왜 올리브 '오일'이 아닌 '워터'인가?</h2>
+        
+        <div class="comparison-container">
+            <!-- Left Card -->
+            <div class="card card-left">
+                <h3 class="card-title">올리브 오일</h3>
+                <p class="card-desc">폴리페놀 함유량</p>
+                <div class="card-value">1~<span id="count-oil">0</span><small>%</small></div>
+            </div>
+            
+            <!-- VS -->
+            <div class="vs-text">VS</div>
+            
+            <!-- Right Card -->
+            <div class="card card-right">
+                <h3 class="card-title">올리브 워터</h3>
+                <p class="card-desc">폴리페놀 함유량</p>
+                <div class="card-value"><span id="count-water">0</span><small>%</small></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Spacer -->
+    <div style="height: 50vh;"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const hookSection = document.getElementById('hookSection');
+            const cardLeft = document.querySelector('.card-left');
+            const cardRight = document.querySelector('.card-right');
+            const vsText = document.querySelector('.vs-text');
+            const countOil = document.getElementById('count-oil');
+            const countWater = document.getElementById('count-water');
+            
+            let animated = false;
+
+            // Easing function
+            function easeOutQuart(x) {
+                return 1 - Math.pow(1 - x, 4);
+            }
+
+            function animateValue(element, start, end, duration) {
+                const startTime = performance.now();
+                
+                function update(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const easedProgress = easeOutQuart(progress);
+                    const currentNumber = Math.floor(easedProgress * (end - start) + start);
+                    
+                    element.innerText = currentNumber;
+
+                    if (progress < 1) {
+                        requestAnimationFrame(update);
+                    } else {
+                        element.innerText = end;
+                    }
+                }
+                requestAnimationFrame(update);
+            }
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !animated) {
+                        animated = true;
+                        
+                        // Add active classes for CSS animations
+                        cardLeft.classList.add('active');
+                        cardRight.classList.add('active');
+                        vsText.classList.add('active');
+
+                        // Start number count up (delay slightly to match slide-in)
+                        setTimeout(() => {
+                            animateValue(countOil, 0, 2, 1200); // 1~2%
+                            animateValue(countWater, 0, 53, 1500); // 53%
+                        }, 400);
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            observer.observe(hookSection);
+        });
+    </script>
+</body>
+</html>

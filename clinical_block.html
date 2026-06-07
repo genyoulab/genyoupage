@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olive Glow Booster - Clinical Section</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Reset & Variables */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-deep: #3F5A0F;
+            --color-tint: #A8C36A;
+            --color-gold: #C9A227;
+            --color-text: #2A2A22;
+            --color-white: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #f0f0f0; /* 배경 구분용 */
+        }
+
+        /* Clinical Section */
+        .clinical-section {
+            width: 100%;
+            background-color: var(--color-deep);
+            padding: 100px 5%;
+            color: var(--color-white);
+            text-align: center;
+        }
+
+        .clinical-header {
+            margin-bottom: 60px;
+        }
+
+        .clinical-title {
+            font-size: 30px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--color-white);
+        }
+
+        .clinical-subtitle {
+            font-size: 16px;
+            font-weight: 400;
+            color: var(--color-tint);
+            letter-spacing: 0.5px;
+        }
+
+        /* Grid Layout */
+        .clinical-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .graph-row {
+            display: flex;
+            gap: 24px;
+        }
+
+        /* Graph Frames (Placeholders) */
+        .graph-frame {
+            background-color: var(--color-white);
+            border: 1.5px dashed var(--color-gold);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            /* Placeholder padding */
+            padding: 40px 20px;
+        }
+
+        .graph-half {
+            flex: 1;
+            min-height: 300px;
+        }
+
+        .graph-wide {
+            width: 100%;
+            min-height: 380px;
+        }
+
+        /* Frame internal content */
+        .frame-content {
+            text-align: center;
+            color: var(--color-text);
+            z-index: 2;
+        }
+
+        .graph-label {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #444;
+        }
+
+        .graph-value {
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .highlight-gold {
+            color: var(--color-gold);
+        }
+
+        .graph-value .arrow {
+            color: #999;
+            font-weight: 400;
+            font-size: 32px;
+            margin: 0 10px;
+        }
+
+        /* Placeholder helper text */
+        .placeholder-text {
+            display: block;
+            margin-top: 30px;
+            font-size: 14px;
+            color: #B0B0B0;
+            font-weight: 300;
+            padding: 8px 16px;
+            background: #F8F9FA;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        /* Later image usage class (hidden for now, used when real img is added) */
+        .graph-img-real {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* changed from cover to contain to show full graph */
+            display: block; /* Enabled */
+            z-index: 1;
+        }
+        
+        .frame-content {
+            display: none; /* Hide placeholder text since real images are used */
+        }
+
+        /* Disclaimer */
+        .disclaimer {
+            margin-top: 40px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+        }
+
+        /* Mobile Responsive */
+        @media screen and (max-width: 768px) {
+            .graph-row {
+                flex-direction: column;
+            }
+
+            .graph-half {
+                min-height: 250px;
+            }
+
+            .graph-wide {
+                min-height: 300px;
+            }
+
+            .graph-value {
+                font-size: 36px;
+            }
+
+            .graph-label {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Spacer to demonstrate scroll effect -->
+    <div style="height: 100vh; display:flex; align-items:center; justify-content:center; color:#888;">
+        아래로 스크롤하여 섹션 확인 ↓
+    </div>
+
+    <section class="clinical-section" id="clinicalSection">
+        <div class="clinical-header">
+            <h2 class="clinical-title">임상으로 입증된 보습 효과</h2>
+            <p class="clinical-subtitle">선진임상연구센터 · 22명 · IRB 승인</p>
+        </div>
+        
+        <div class="clinical-grid">
+            <!-- Row 1: Side by side graphs -->
+            <div class="graph-row">
+                <!-- Graph 1 -->
+                <div class="graph-frame graph-half">
+                    <img src="./graph1.jpg" alt="보습 밀도 3D 그래프" class="graph-img-real">
+                    <div class="frame-content">
+                        <p class="graph-label">보습 밀도</p>
+                        <div class="graph-value highlight-gold">+<span class="count-float" data-target="113.66">0.00</span>%</div>
+                        <span class="placeholder-text">3D 그래프 ① 이미지 영역</span>
+                    </div>
+                </div>
+
+                <!-- Graph 2 -->
+                <div class="graph-frame graph-half">
+                    <img src="./graph2.jpg" alt="속보습 3D 그래프" class="graph-img-real">
+                    <div class="frame-content">
+                        <p class="graph-label">속보습</p>
+                        <div class="graph-value highlight-gold">+<span class="count-float" data-target="8.44">0.00</span>%</div>
+                        <span class="placeholder-text">3D 그래프 ② 이미지 영역</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Row 2: Wide Before/After -->
+            <div class="graph-frame graph-wide">
+                <img src="./graph3.jpg" alt="S06 Before/After 3D 비교" class="graph-img-real">
+                <div class="frame-content">
+                    <p class="graph-label">S06 Before / After 3D 비교</p>
+                    <div class="graph-value">12.45 <span class="arrow">→</span> 43.09</div>
+                    <span class="placeholder-text">Before/After 3D 비교 이미지 영역 (가로형)</span>
+                </div>
+            </div>
+        </div>
+        
+        <p class="disclaimer">※ 인체적용시험 결과이며 일시적이고 개인차가 있을 수 있습니다.</p>
+    </section>
+
+    <!-- Spacer -->
+    <div style="height: 50vh;"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const clinicalSection = document.getElementById('clinicalSection');
+            const counters = document.querySelectorAll('.count-float');
+            let animated = false;
+
+            // Easing out quart function for smooth slowing down at the end
+            function easeOutQuart(x) {
+                return 1 - Math.pow(1 - x, 4);
+            }
+
+            function animateFloatValue(element, endValue, duration) {
+                const startTime = performance.now();
+                
+                function update(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const easedProgress = easeOutQuart(progress);
+                    
+                    const currentNumber = (easedProgress * endValue);
+                    
+                    // Format to 2 decimal places
+                    element.innerText = currentNumber.toFixed(2);
+
+                    if (progress < 1) {
+                        requestAnimationFrame(update);
+                    } else {
+                        element.innerText = endValue.toFixed(2);
+                    }
+                }
+                requestAnimationFrame(update);
+            }
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    // Trigger animation when section is somewhat visible
+                    if (entry.isIntersecting && !animated) {
+                        animated = true;
+                        
+                        counters.forEach(counter => {
+                            const target = parseFloat(counter.getAttribute('data-target'));
+                            animateFloatValue(counter, target, 2000); // 2 second duration
+                        });
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            observer.observe(clinicalSection);
+        });
+    </script>
+</body>
+</html>

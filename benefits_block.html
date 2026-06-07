@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olive Glow Booster - Benefits Section</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Reset & Variables */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-main: #658D1B;
+            --color-tint: #A8C36A;
+            --color-text: #2A2A22;
+            --color-white: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #f0f0f0; /* 배경 구분용 (실제 섹션은 흰색) */
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            width: 100%;
+            background-color: var(--color-white);
+            padding: 100px 5%;
+            text-align: center;
+        }
+
+        .benefits-title {
+            color: var(--color-text);
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 60px;
+        }
+
+        /* Grid Layout */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Card Styling */
+        .benefit-card {
+            background-color: var(--color-white);
+            border: 1.5px solid var(--color-tint);
+            border-radius: 16px;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            
+            /* Initial state for fade-in */
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(168, 195, 106, 0.2);
+        }
+
+        /* Animation classes */
+        .benefit-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+            animation: cardFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes cardFadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Staggered Delays */
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+        .delay-5 { animation-delay: 0.5s; }
+        .delay-6 { animation-delay: 0.6s; }
+
+        /* Icon Styling */
+        .benefit-icon {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 64px;
+            height: 64px;
+            background-color: rgba(168, 195, 106, 0.1);
+            border-radius: 50%;
+        }
+
+        .benefit-icon svg {
+            width: 32px;
+            height: 32px;
+            fill: var(--color-main);
+        }
+
+        .benefit-name {
+            color: var(--color-text);
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        /* Mobile Responsive */
+        @media screen and (max-width: 768px) {
+            .benefits-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+
+            .benefit-card {
+                padding: 30px 15px;
+            }
+
+            .benefit-icon {
+                width: 50px;
+                height: 50px;
+                margin-bottom: 15px;
+            }
+
+            .benefit-icon svg {
+                width: 24px;
+                height: 24px;
+            }
+
+            .benefit-name {
+                font-size: 16px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Spacer to demonstrate scroll effect -->
+    <div style="height: 100vh; display:flex; align-items:center; justify-content:center; color:#888;">
+        아래로 스크롤하여 섹션 확인 ↓
+    </div>
+
+    <section class="benefits-section" id="benefitsSection">
+        <h2 class="benefits-title">올리브 워터가 주는 6가지</h2>
+        
+        <div class="benefits-grid" id="benefitsGrid">
+            <!-- Card 1: 항산화 -->
+            <div class="benefit-card delay-1">
+                <div class="benefit-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 2L15 9L22 12L15 15L12 22L9 15L2 12L9 9L12 2ZM6 4L7 6L9 7L7 8L6 10L5 8L3 7L5 6L6 4Z"/></svg>
+                </div>
+                <div class="benefit-name">항산화</div>
+            </div>
+
+            <!-- Card 2: 항염·진정 -->
+            <div class="benefit-card delay-2">
+                <div class="benefit-icon">
+                    <svg viewBox="0 0 24 24"><path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 7,11.5 7,11.5C7,11.5 10.5,8 17,8Z"/></svg>
+                </div>
+                <div class="benefit-name">항염·진정</div>
+            </div>
+
+            <!-- Card 3: 피부장벽 -->
+            <div class="benefit-card delay-3">
+                <div class="benefit-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,11.99H19C18.47,16.11 15.72,19.78 12,20.92V11.99H5V6.3L12,3.19V11.99Z"/></svg>
+                </div>
+                <div class="benefit-name">피부장벽</div>
+            </div>
+
+            <!-- Card 4: 콜라겐 보호 -->
+            <div class="benefit-card delay-4">
+                <div class="benefit-icon">
+                    <!-- Leaf / Droplet Hybrid for collagen/vitality -->
+                    <svg viewBox="0 0 24 24"><path d="M12 22C6.477 22 2 17.523 2 12C2 6.477 6.477 2 12 2C17.523 2 22 6.477 22 12C22 17.523 17.523 22 12 22ZM11 11H7V13H11V17H13V13H17V11H13V7H11V11Z"/></svg>
+                </div>
+                <div class="benefit-name">콜라겐 보호</div>
+            </div>
+
+            <!-- Card 5: 광보호 -->
+            <div class="benefit-card delay-5">
+                <div class="benefit-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 18C8.686 18 6 15.314 6 12C6 8.686 8.686 6 12 6C15.314 6 18 8.686 18 12C18 15.314 15.314 18 12 18ZM11 2V5H13V2H11ZM11 19V22H13V19H11ZM2 11V13H5V11H2ZM19 11V13H22V11H19ZM5.636 4.222L4.222 5.636L6.343 7.757L7.757 6.343L5.636 4.222ZM18.364 16.95L16.95 18.364L19.071 20.485L20.485 19.071L18.364 16.95ZM19.778 5.636L18.364 4.222L16.243 6.343L17.657 7.757L19.778 5.636ZM6.343 16.243L4.222 18.364L5.636 19.778L7.757 17.657L6.343 16.243Z"/></svg>
+                </div>
+                <div class="benefit-name">광보호</div>
+            </div>
+
+            <!-- Card 6: Glow 시너지 -->
+            <div class="benefit-card delay-6">
+                <div class="benefit-icon">
+                    <svg viewBox="0 0 24 24"><path d="M2.235 21.058a1 1 0 0 0 1.414 0l16.26-16.26A2 2 0 0 0 17.08 1.97L.82 18.23a1 1 0 0 0 0 1.414l1.415 1.414zM19.5 10c-.5-1.5-1.5-2.5-3-3 1.5-.5 2.5-1.5 3-3 .5 1.5 1.5 2.5 3 3-1.5.5-2.5 1.5-3 3zM15 23c-.5-1.5-1.5-2.5-3-3 1.5-.5 2.5-1.5 3-3 .5 1.5 1.5 2.5 3 3-1.5.5-2.5 1.5-3 3z"/></svg>
+                </div>
+                <div class="benefit-name">Glow 시너지</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Spacer -->
+    <div style="height: 50vh;"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const benefitsSection = document.getElementById('benefitsSection');
+            const cards = document.querySelectorAll('.benefit-card');
+            
+            let animated = false;
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    // Trigger animation when the section is about 20% visible
+                    if (entry.isIntersecting && !animated) {
+                        animated = true;
+                        
+                        // Add 'visible' class to trigger CSS animation with staggered delays
+                        cards.forEach(card => {
+                            card.classList.add('visible');
+                        });
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            observer.observe(benefitsSection);
+        });
+    </script>
+</body>
+</html>
