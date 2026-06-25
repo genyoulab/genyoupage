@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Allerta+Stencil&display=swap" rel="stylesheet">
     <style>
         /* Color Variables */
         :root {
@@ -96,13 +97,19 @@
             color: #ffffff;
             z-index: 2;
         }
-        .hero-eng {
-            font-family: 'Pretendard', sans-serif;
-            font-size: 16px;
-            color: var(--tint);
-            font-weight: 600;
-            letter-spacing: 1px;
-            margin-bottom: 12px;
+        /* Section 00: Media Banner */
+        .media-banner {
+            position: relative;
+            width: 100%;
+            height: 720px;
+            overflow: hidden;
+            background-color: var(--deep); /* fallback matching hero section */
+        }
+        .media-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
         .hero-title {
             font-size: 42px;
@@ -864,6 +871,39 @@
             font-size: 16px;
         }
 
+        /* 가격 표기 스타일 */
+        .hero-price {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 24px;
+        }
+        .cta-price {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 24px;
+        }
+
+        /* Section 07.5: Usage Visual Image Block */
+        .usage-visual {
+            background-color: var(--cream);
+            padding: 60px 0;
+            text-align: center;
+        }
+        .visual-img-container {
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+        .visual-img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
         /* ==============================
            Section 12: Final CTA
            ============================== */
@@ -914,15 +954,16 @@
         @media screen and (max-width: 768px) {
             .hero {
                 height: auto;
-                padding: 100px 0 80px 0;
+                padding: 60px 0 80px 0; /* Reduced top padding for tighter scroll flow */
                 text-align: center;
             }
             .hero .container {
                 flex-direction: column;
             }
-            .hero-eng {
-                font-size: 14px;
-                margin-bottom: 10px;
+            .media-banner {
+                height: 56.25vw; /* 16:9 aspect ratio */
+                min-height: 300px;
+                padding: 0;
             }
             .hero-title {
                 font-size: 36px;
@@ -1145,21 +1186,42 @@
                 max-width: 320px;
                 padding: 18px 0;
             }
+            .hero-price {
+                font-size: 20px;
+                margin-bottom: 20px;
+            }
+            .cta-price {
+                font-size: 24px;
+                margin-bottom: 20px;
+            }
+            .usage-visual {
+                padding: 40px 0;
+            }
+            .visual-img-container {
+                border-radius: 8px;
+            }
         }
     </style>
 </head>
 <body>
 
+    <!-- Section 00: Media Background Banner -->
+    <section class="media-banner" id="section-media-banner">
+        <video autoplay loop muted playsinline class="media-video">
+            <source src="./Cinematic_product_intro_video.mp4" type="video/mp4">
+        </video>
+    </section>
+
     <!-- Section 1: Hero -->
     <section class="hero" id="section-hero">
         <div class="container">
             <div class="hero-content fade-in-up">
-                <div class="hero-eng">Anytime. Spray Olive, Not Water.</div>
                 <h1 class="hero-title">흔들어, 뿌려, 빛나.</h1>
                 <p class="hero-sub">올리브워터가 완성하는 3초 글로우</p>
-                <p class="hero-desc">지중해 생명력을 머금은 올리브와 라벤더·일랑일랑이 선사하는 깊은 휴식, 가볍게 스며들어 밝은 광채를 남깁니다</p>
+                <div class="hero-price">21,000원</div>
+                <p class="hero-desc">지중해 생명력을 머금은 올리브와<br>라벤더·일랑일랑이 선사하는 깊은 휴식,<br>가볍게 스며들어 밝은 광채를 남깁니다</p>
                 <div class="hero-highlight">
-                    🫒 정제수 없이, 올리브워터 베이스<br>뿌리는 모든 것이 피부를 위해 작용합니다
+                    🫒 정제수 대신, 올리브워터 베이스<br>뿌리는 모든 것이 피부를 위해 작용합니다
                 </div>
             </div>
             <div class="hero-visual fade-in-up" style="transition-delay: 0.2s;">
@@ -1325,6 +1387,15 @@
         </div>
     </section>
 
+    <!-- Section 7.5: Visual Image -->
+    <section class="usage-visual" id="section-usage-visual">
+        <div class="container">
+            <div class="visual-img-container fade-in-up">
+                <img src="./olive glow booster user.png" alt="Olive Glow Booster Usage Guide" class="visual-img">
+            </div>
+        </div>
+    </section>
+
     <!-- Section 8: Usage -->
     <section class="usage" id="section-usage">
         <div class="container">
@@ -1479,6 +1550,7 @@
             <div class="cta-eng fade-in-up" style="font-size:16px; color:var(--tint); font-weight:600; letter-spacing:1px; margin-bottom:10px;">Shake, Mist, Glow.</div>
             <h2 class="cta-title title-font fade-in-up">흔들어, 뿌려, 빛나.</h2>
             <p class="cta-sub fade-in-up" style="transition-delay: 0.1s;">정제수, 계면활성제, 인공향료를 배제하고<br>올리브워터가 만드는 글로우를 경험해보세요.</p>
+            <div class="cta-price fade-in-up" style="transition-delay: 0.15s;">21,000원</div>
             
             <div class="fade-in-up" style="transition-delay: 0.2s;">
                 <a href="#section-hero" class="cta-button">지금 구매하기</a>
